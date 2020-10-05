@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.vaadin.addon</groupId>
-    <artifactId>timeu-wizard</artifactId>
+    <artifactId>vaadin-timeu-wizard</artifactId>
     <version>2.1.1</version>
     <packaging>jar</packaging>
 
-    <name>Vaadin timeu-wizard component</name>
+    <name>Timeu-wizard component</name>
     <description>Integration of timeu-wizard component for Vaadin 17</description>
     
     <properties>
