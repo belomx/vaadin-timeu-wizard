@@ -19,7 +19,7 @@ import com.vaadin.flow.templatemodel.TemplateModel;
 
 @Tag("vaadin-timeu-wizard")
 @JsModule("./addon/wizard/timeu-wizard.js")
-@NpmPackage(value = "@belomx/timeu-wizard", version = "^1.7.5")
+@NpmPackage(value = "@belomx/timeu-wizard", version = "^1.7.6")
 public class TimeuWizard extends PolymerTemplate<TimeuWizard.WizardModel> implements HasStyle, HasValue<AbstractField.ComponentValueChangeEvent<TimeuWizard, Integer>, Integer>, HasSize {
 
     private static final long serialVersionUID = 1L;
