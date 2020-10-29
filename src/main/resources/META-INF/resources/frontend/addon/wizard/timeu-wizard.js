@@ -79,7 +79,8 @@ class VaadinTimeuWizard extends
     }
 
     _onChangeStep (newValue, oldValue) {
-	    this.$server.onValueChanged();
+	    if (this.$server !== undefined && this.$server.onValueChanged !== undefined)
+	        this.$server.onValueChanged();
     }
 
     updateConfig() {
