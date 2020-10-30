@@ -83,6 +83,24 @@ class VaadinTimeuWizard extends
 	        this.$server.onValueChanged();
     }
 
+    /**
+     * Increment the current step
+     *
+     * Use this function for moving to the next step in the wizard
+     */
+    increment() {
+      this.shadowRoot.querySelector('timeu-wizard').increment();
+    }
+
+    /**
+     * Decrement the current step
+     *
+     * Use this function for moving to the previous step in the wizard
+     */
+    decrement() {
+      this.shadowRoot.querySelector('timeu-wizard').decrement();
+    }
+
     updateConfig() {
     }
 
