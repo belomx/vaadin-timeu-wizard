@@ -20,6 +20,7 @@ public class DemoView extends VerticalLayout
 {
     private TimeuWizard wizard = null;
     private TimeuWizard wizard2 = null;
+    private TimeuWizard wizard3 = null;
     private Label wizardValue = null;
 
     public DemoView()
@@ -41,6 +42,9 @@ public class DemoView extends VerticalLayout
         HorizontalLayout wizardLine = new HorizontalLayout();
         wizard = new TimeuWizard(List.of("Step 1","Step 2","Step3","Step4","Step5"), 1);
         wizard.addClassName("wizardsConfig");
+        wizard.addItemTapListener(e -> {
+            e.getSource().setStep(e.getItemsIndex());
+        });
         wizard.addValueChangeListener(e -> {
             Integer value = e.getValue();
             wizardValue.setText("Wizard value: "+value);
@@ -66,5 +70,15 @@ public class DemoView extends VerticalLayout
         nextButton2.addClickListener(e -> wizard2.next());
         buttonsLine2.add(previousButton2, nextButton2);
         add(wizard2, buttonsLine2);
+        
+        wizard3 = new TimeuWizard(List.of("{\"label\":\"FIRST STEP\",\"content\":\"\\uf007\"}","{\"label\":\"CHOOSE INTEREST\",\"content\":\"\\uf132\"}","{\"label\":\"ADD FRIENDS\",\"content\":\"\\uf041\"}","{\"label\":\"VIEW MAP\",\"content\":\"\\uf07a\"}"),
+                1 ,Boolean.TRUE, TimeuWizard.VerticalLabelDirection.RIGHT, Boolean.TRUE,
+                e -> {
+                    e.getSource().setStep(e.getItemsIndex());
+                } ) ;
+        wizard3.setId("wizard-with-icons");
+        wizard3.setWidthFull();
+        
+        add(wizard3);
     }
 }

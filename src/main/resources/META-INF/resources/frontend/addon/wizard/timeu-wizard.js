@@ -21,6 +21,9 @@ class VaadinTimeuWizard extends
                 steps=[[steps]]
                 step={{step}}
                 vertical=[[vertical]]
+                left=[[left]]
+                right=[[right]]
+                clickablestep=[[clickablestep]]
                 >
         </paper-range-slider>     
     `;
@@ -39,6 +42,7 @@ class VaadinTimeuWizard extends
         return {
             steps: {
                 type: Array,
+                reflectToAttribute: true,
                 value: function() {
                   return [];
                 }
@@ -54,8 +58,27 @@ class VaadinTimeuWizard extends
                 type: Boolean,
                 reflectToAttribute: true,
                 value: false
+            },
+            left: {
+                type: Boolean,
+                reflectToAttribute: true,
+                value: false
+            },
+            right: {
+                type: Boolean,
+                reflectToAttribute: true,
+                value: false
+            },
+            clickablestep: {
+                type: Boolean,
+                reflectToAttribute: true,
+                value: false
             }
         }
+    }
+
+    constructor() {
+        super();        
     }
 
     connectedCallback () {
@@ -71,11 +94,13 @@ class VaadinTimeuWizard extends
             } catch (e) {
                 jsonStep = newValue[i];
             }
-            
             parsedSteps.push(jsonStep);
         }
 		    
         this.steps = parsedSteps;
+
+        let wizard = this.shadowRoot.querySelector('timeu-wizard');
+        wizard.addEventListener('timeu-wizard-item-tap', this._handleItemTap);
     }
 
     _onChangeStep (newValue, oldValue) {
@@ -102,6 +127,10 @@ class VaadinTimeuWizard extends
     }
 
     updateConfig() {
+    }
+
+    _handleItemTap(e) {	
+      this.dispatchEvent(new CustomEvent('vaadin-timeu-wizard-item-tap', { bubbles: true, composed: true, detail: {model: e.detail.model, target:e.detail.target} }));
     }
 
     ready() {
