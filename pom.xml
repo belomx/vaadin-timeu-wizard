@@ -5,14 +5,14 @@
 
     <groupId>org.vaadin.addon</groupId>
     <artifactId>vaadin-timeu-wizard</artifactId>
-    <version>2.1.7</version>
+    <version>2.2.0</version>
     <packaging>jar</packaging>
 
     <name>Timeu-wizard component</name>
     <description>Integration of timeu-wizard component for Vaadin 17</description>
     
     <properties>
-        <vaadin.version>17.0.0</vaadin.version>
+        <vaadin.version>23.0.3</vaadin.version>
         <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -55,10 +55,7 @@
             <id>Vaadin prereleases</id>
             <url>http://maven.vaadin.com/vaadin-prereleases</url>
         </repository>
-        <repository>
-            <id>webjars</id>
-            <url>https://dl.bintray.com/webjars/maven</url>
-        </repository>
+      
 
         <!-- Repository needed for the snapshot versions of Vaadin -->
         <repository>
@@ -66,6 +63,14 @@
             <url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
         </repository>
     </repositories>
+    
+    <distributionManagement>
+			<repository>
+				<id>${distribution.id}</id>
+				<name>${distribution.name}</name>
+				<url>${distribution.url}</url>
+			</repository>
+		</distributionManagement>
 
     <pluginRepositories>
         <!-- Repository needed for prerelease versions of Vaadin -->
